@@ -1,101 +1,293 @@
-import Image from "next/image";
+"use client";
+import { IndianRupee, ShoppingCart } from "lucide-react";
+import HomeSlider from "./component/HomeSlider";
+import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { add } from "./redux/reducer/cartSlice";
+
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const dispatch = useDispatch();
+  const imgCategory = [
+    {
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      Name: "Sports",
+      Url: "./images/Sports.jpg",
+    },
+    {
+      Name: "Toy",
+      Url: "./images/Toys.jpg",
+    },
+    {
+      Name: "Beauty & Personal Care",
+      Url: "./images/Beauty.jpg",
+    },
+    {
+      Name: "Automobile Accessories",
+      Url: "./images/Automobile.jpg",
+    },
+  ];
+  const product = [
+    {
+      id: 1,
+      name: "Samsung Laptop",
+      category: "Electronic",
+      price: "80000",
+      url: "/images/Product-1.jpg",
+      desc: "Samsung laptops often feature high-resolution AMOLED or QLED displays with vibrant colors, sharp details, and excellent brightness levels, ensuring an immersive viewing experience.",
+      Performance:
+        "Powered by the latest Intel or AMD processors, Samsung laptops deliver fast and efficient performance for multitasking, video editing, gaming, and more.",
+    },
+    {
+      id: 2,
+      name: "Pedestal Fan",
+      category: "Electronic",
+      price: "2500",
+      url: "/images/Product-2.jpg",
+
+      desc: "Warranty: 2 years warranty provided by Crompton from date of purchase. Installation is not provided by brand. For product related queries please visit Crompton's website; Warranty: 2 Years;Includes: 1 Pedestal Fan",
+
+      Performance:
+        "Sturdy Base and Thermal Overload Protection for safety and durability;Sweep Size = 400 mm; Speed = 2100 RPM; Air Delivery = 105 CMM; Input Power = 125W",
+
+    },
+    {
+      id: 3,
+      name: "Football",
+      category: "Sports",
+      price: "999",
+      url: "/images/Product-3.jpg",
+
+      desc: "Nivia Dominator 3.0 Football, Match Ball, 32 Panels, Durable & Soft PU Leather, Butyl Fabric Wounded Bladder, FIFA Basic, to Play on Both Natural and Artificial Grass (Multicolor, Size - 5)",
+
+      Performance:
+        "FIFA Basic Certified: Ideal for competitive championships Consistent Flight & Bounce: Perfect for tournament-level precision.Durable & Soft PU Leather Cover: Long-lasting performance on all surfaces.",
+
+    },
+    {
+      id: 4,
+      name: "Water Bottle",
+      category: "Home & Kitchen",
+      price: "349",
+      url: "/images/Product-4.jpg",
+
+      desc: "Boldfit Water Bottles Stainless Steel Water Bottle 1 Litre Steel Water Bottles for School, Office, Home, Gym 1 Litre Water Bottle for Men Leakproof, Rust free Steel Bottle -1000 ml Water Bottle Black",
+      Performance:
+        "KEEP WATER & BEVERAGES FOR ALL DAY : Boldfit 1 litre water bottle steel bottle made with single- thin walled metal technology, which facilitates keeping water and beverages whole day as per your requirement without any difference in odour. Also taste & nutritive value will remain same throughout storage time in this water bottle.",
+    },
+    {
+      id: 5,
+      name: "Chhava Novel",
+      category: "Book",
+      price: "499",
+      url: "/images/Product-5.jpg",
+
+      desc: "CHHAAVA | CHATRAPATI SAMBHAJI MAHARAJ AND HIS FIGHT FOR SWARAJYA | CHHAVA | CHAVA | CHHAWA | CHAAWA - SHIVAJI SAWANT | CHATRAPATI SHIVAJI MAHARAJ | ENGLISH EDITION | MARATHA HISTORY ",
+    },
+    {
+      id: 6,
+      name: "Dandruff Shampoo",
+      category: "Beauty",
+      price: "249",
+      url: "/images/Product-6.jpg",
+      desc: "Head & Shoulders Smooth and Silky, Anti Dandruff Shampoo for Women & Men , 1 L",
+      Performance:
+        "Richly indulgent anti-dandruff shampoo for dry, damaged or frizzy hair, Leaves hair up to 100% dandruff free; Gentle enough for everyday use, even for color or chemically treated hair Richly indulgent anti-dandruff shampoo for dry, damaged or frizzy hair, Leaves hair up to 100% dandruff free; Gentle enough for everyday use, even for color or chemically treated hair",
+
+    },
+    {
+      id: 7,
+      name: "Sonic Ac",
+      category: "Electronic",
+      price: "49999",
+      url: "/images/Product-7.jpg",
+
+      desc: "Panasonic 1.5 Ton 3 Star Wi-Fi Inverter Smart Split AC (Copper Condenser, 7 in 1 Convertible with True AI Mode, PM 0.1 Air Purification Filter, CS/CU-SU18ZKYWT, White) ",
+
+      Performance:
+        "Capacity: 1.5 Ton - Suitable for medium sized rooms (121-170 sq ft). Energy Star Rating: 3 Star | Annual Power Consumption: 1002.31 kWh | ISEER: 3.90. The star rating is as per new BEE guidelines.501 (Indoor) CFM Air Circulation & Ambient Temperature: 16 to 52 degree Celsius.",
+
+    },
+    {
+      id: 8,
+      name: "Rede Nine Shirt",
+      category: "Cloth",
+      price: "1299",
+      url: "/images/Product-8.jpg",
+
+      desc: "Red Nine Solid Casual Shirt: 100% Cotton, Spread Collar, Buttoned Front - Perfect for Boys' Casual Elegance.",
+      Performance:
+        "Material composition100% Cotton PatternSolid Fit typeRegular Fit Sleeve typeLong Sleeve Collar styleSpread Collar LengthStandard Length Country of OriginIndia",
+
+    },
+    {
+      id: 9,
+      name: "Men Sneaker",
+      category: "FootWear",
+      price: "4999",
+      url: "/images/Product-9.jpg",
+
+      desc: "Bakca Bukki Balancer Men's Fashion Sneakers Lace-Up Trainers Basketball Style Walking Shoes ",
+      Performance:
+        "The sneaker gets outfitted with a sort of roll-cage on its upper for just a bit more support.High top shoes style, attached ankle closely, and improve shoes wrapping performance.",
+    },
+    {
+      id: 10,
+      name: "HeadPhone",
+      category: "Electronic",
+      price: "1499",
+      url: "/images/Product-10.jpg",
+
+      desc: "Boolt Q Over Ear Bluetooth Headphones with 70H Playtime, 40mm Bass Drivers, Zen™ ENC Mic, Type-C Fast Charging, 4 EQ Modes, Bluetooth 5.4, AUX Option, Easy Controls, IPX5 Wireless Headphones (Beige) ",
+      Performance:
+        "70H Playtime: Boult Q wireless over-ear headphones offer an impressive 70 hours of playtime, ensuring you can enjoy non-stop music, calls, or gaming without worrying about frequent charging interruptions.✅ 40mm Bass Drivers: Feel the power of deep, rich bass with 40mm drivers, designed to deliver an immersive audio experience in these Bluetooth headphones, perfect for music lovers seeking enhanced sound quality.",
+
+    },
+    {
+      id: 11,
+      name: "Laptop Bag",
+      category: "Bags",
+      price: "899",
+      url: "/images/Product-11.jpg",
+
+      desc: "Lawie Sport 47cm Osprey 28 Litres Laptop Backpack For Men & Women | Business Laptop Bag | Upto 15.6 Notebook/Macbook Compatible (Blue) ",
+    },
+    {
+      id: 12,
+      name: "Taddy Bear",
+      category: "Toy",
+      price: "1100",
+      url: "/images/Product-12.jpg",
+
+      desc: "AVSHUB Soft Toy Teddy Bear 6 Feet for Girl Lovable Huggable Teddy Bear | Plushie Soft Toys for Kids | Plush Soft Toys for Baby Boys and Girls Kids - Teddy | Birthday & Valentine Gift (Cream) ",
+      Performance:
+        "Soft and Cuddly: The stuffed animal soft toy is incredibly soft and cuddly, making it perfect for hugging and snuggling. It provides comfort and warmth, making it a perfect companion for kids and adults alike.Design: The plush toy features an adorable and lovable teddy bear design that is sure to win the hearts of both kids and adults. It is available in color and measures 6 feet in height, making it a perfect size to snuggle with.",
+
+    },
+    {
+      id: 13,
+      name: "My Phone",
+      category: "Electronic",
+      price: "110999",
+      url: "/images/Product-13.jpg",
+      desc: "Processor: High performance MediaTek Helio G36,upto 2.2GHz| Fast Side fingerprint sensor | Upto 8GB RAM including 4GB Virtual RAM |64GB Storage; Display: Large 17.04 cm 90Hz dot display with ",
+      Performance:
+        "High performance MediaTek Helio G36,upto 2.2GHz; | 6.71 HD+ 90Hz Display with GG3 Protection | Upto 8GB RAM including 4GB Virtual RAM |64GB Storage | Fast Side fingerprint sensor Display: Large 17.04 cm 90Hz dot display with Corning Gorilla Glass 3 protection | 500nits peak brightness | 180Hz Touch sampling Rate",
+
+    },
+    {
+      id: 14,
+      name: "Laddy Sandal",
+      category: "FootWear",
+      price: "1100",
+      url: "/images/Product-14.jpg",
+
+      desc: "Step into the spotlight and make heads turn with Monrow Heels! Prepare to be captivated by our irresistibly stylish and luxuriously comfortable footwear. These vegan-friendly masterpieces effortlessly blend class and chic, creating a harmonious fusion of fashion and function. ",
+      Performance:
+        "MONROW Noel Leather Wedge Heels for Women & Girls | Fancy & Stylish Heel sandals |Extra Cushioning & Comfortable, Fashionable, Light Weight, Vegan, Fashion Heel Sandal for Girls, Green, 4UK",
+
+    },
+    {
+      id: 15,
+      name: " Casual Denim",
+      category: "Cloths",
+      price: "1900",
+      url: "/images/Product-15.jpg",
+
+      desc: "Sizes: XS-36 Inches | S-38 Inches | M-40 Inches | L-42 Inches | XL-44 Inches | 2XL-46 Inches | 3XL-48 Inches | 4XL-50 Inches | 5XL-52 Inches | 6XL-54 Inches | 7XL-56 Inches; Please check the size chart before ordering for the perfect fit",
+      Performance:
+        "100% High-grade premium soft Cotton Denim Fabri Full-sleeve casual button-down shirt with a left-chest pocket and guaranteed 0% shrinkage post washing Stylish Slim-fit classic shirt, easy through chest and",
+
+    },
+  ];
+  const addtoCart = (item) => {
+    dispatch(add(item));
+    toast.success("Product Added to Cart");
+  }
+
+  return (
+    <>
+      <div className="mt-3">
+        <HomeSlider />
+        {/* Categories Section */}
+        <section className="py-10 bg-gray-100">
+          <div className="max-w-7xl mx-auto px-4">
+            <h2 className="text-2xl font-bold text-center mb-8">
+              Shop by Category
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 object-cover">
+              {imgCategory.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition hover:bg-gray-100 hover:scale-110"
+                >
+                  <img
+                    src={item.Url}
+                    className="w-full h-32 object-cover rounded-lg mb-3"
+                  />
+                  <h3 className="text-lg font-semibold text-center">
+                    {item.Name}
+                  </h3>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Featured Products Section */}
+        <section className="py-10">
+          <div className="max-w-7xl mx-auto px-4">
+            <h2 className="text-2xl font-bold text-center mb-8">
+              Featured Products
+            </h2>
+            <div className="w-11/12 mx-auto my-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+                {product.map((item, i) => (
+                  <div
+                    key={i}
+                    className="bg-white shadow-lg rounded-lg p-5 flex flex-col hover:shadow-xl transition-all"
+                  >
+                    <h2 className="text-center text-blue-900 text-xl font-bold mb-3">
+                      {item.name}
+                    </h2>
+
+                    <img
+                      src={item.url}
+                      alt={item.name}
+                      className="h-50 w-full object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
+                    />
+
+                    {/* Set a fixed height for descriptions */}
+                    <h2 className="mt-3 text-lg font-semibold">{item.name}</h2>
+                    <h2 className="flex my-2 font-semibold items-center">
+                      <IndianRupee />
+                      {item.price}
+                    </h2>
+                    <p className="text-gray-700 mt-2 overflow-auto">
+                      category:{item.category}
+                    </p>
+
+                    {/* Ensure buttons align by using a flex container with full width */}
+                    <div className="mt-4 flex justify-center w-full">
+                      <Link href={`/product/${item.id}`} className="w-1/2">
+                        <button className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-md transition-all shadow-md">
+                          Show Details
+                        </button>
+                      </Link>
+
+                      <button className=" bg-green-700 hover:bg-green-800 text-white px-2 py-2 rounded-md transition-all shadow-md flex items-center justify-center gap-2"
+                        onClick={() => addtoCart(item)}>
+                        <ShoppingCart size={18} /> Add to Cart
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
   );
 }
