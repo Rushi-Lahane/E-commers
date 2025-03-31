@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# E-Commerce Platform
 
-## Getting Started
+## 🚀 Project Overview
+This is a modern **E-Commerce Platform** built using **Next.js**, **Tailwind CSS**, and **Redux** on the frontend, with **Spring Boot** and **MySQL** powering the backend. The platform provides a seamless shopping experience with features like product browsing, secure checkout, and fast order processing.
 
-First, run the development server:
+## 🛠 Tech Stack
+### Frontend:
+- **Next.js** – Server-side rendering & optimized performance.
+- **Tailwind CSS** – Fast and responsive UI design.
+- **Redux Toolkit** – State management for cart and authentication.
+- **AOS (Animate on Scroll)** – Smooth animations for a better user experience.
 
-```bash
+### Backend:
+- **Spring Boot** – RESTful APIs for handling authentication, orders, and payments.
+- **MySQL** – Database management for products, users, and transactions.
+- **JWT Authentication** – Secure login and session management.
+
+## 🌟 Features
+- 🔹 **User Authentication** – Sign up, login, and manage accounts securely.
+- 🔹 **Product Listings** – Browse products with categories and filters.
+- 🔹 **Shopping Cart** – Add/remove products with real-time price updates.
+- 🔹 **Secure Checkout** – Place orders with payment integration.
+- 🔹 **Order Tracking** – View order history and track deliveries.
+- 🔹 **Admin Dashboard** – Manage products, users, and orders.
+
+## 📦 Installation
+
+### 1️⃣ Setup the Frontend
+```sh
+cd frontend
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2️⃣ Setup the Backend
+```sh
+cd backend
+mvn clean install
+mvn spring-boot:run
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🔗 API Endpoints
+| Method | Endpoint            | Description                      |
+|--------|--------------------|----------------------------------|
+| GET    | `/api/products`    | Fetch all products              |
+| GET    | `/api/orders`      | Fetch user orders               |
+| POST   | `/api/cart`        | Add product to cart             |
+| POST   | `/api/auth/login`  | Authenticate user login         |
+| POST   | `/api/auth/signup` | Register a new user             |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🤝 Contributing
+We welcome contributions! Feel free to fork this repo, submit pull requests, and improve the platform.
 
-## Learn More
+## 📜 License
+This project is **MIT Licensed** – feel free to use and modify it as needed.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+🚀 **Happy Shopping!** 🛒

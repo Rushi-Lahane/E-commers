@@ -4,7 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 
 function Page() {
     const onSubmit = async (event) => {
-        event.preventDefault();
+     
         const formData = new FormData(event.target);
 
         // Add your public access key here
